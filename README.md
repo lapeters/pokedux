@@ -1,6 +1,6 @@
-# React Starter
+# Pokedux
 
-Standard starter template for React based projects. Uses Webpack for bundling, Babel, and ESLint with custom rules and Airbnb config package.
+A Pokédex app made using React and Redux. Template uses My React Starter found [here](https://github.com/lapeters/myreactstarter)
 
 ## Installation
 

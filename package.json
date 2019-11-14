@@ -1,7 +1,7 @@
 {
   "name": "Pokedux",
   "version": "1.0.0",
-  "description": "A starter template for React projects with Webpack and Babel",
+  "description": "A Pokédex app made using React and Redux.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
