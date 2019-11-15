@@ -1,0 +1,26 @@
+// GRID VARIABLES
+$grid__cols: 12;
+
+$grid__breakpoints: (
+  "": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1440px,
+  "xxxl": 1920px
+);
+
+$container-max-widths: (
+  "": 0,
+  "sm": 540px,
+  "md": 720px,
+  "lg": 940px,
+  "xl": 1140px,
+  "xxl": 1140px,
+  "xxxl": 1372px,
+);
+
+// COLOR VARIABLES
+$navy: #001e38;
+$green: #15b78f;

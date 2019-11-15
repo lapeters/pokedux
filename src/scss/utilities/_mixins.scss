@@ -1,0 +1,78 @@
+/* Grid Mixins
+=================================== */
+@mixin media-breakpoint-up($name, $breakpoints: $grid__breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid__breakpoints) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+@mixin media($breakpoint, $min-or-max) {
+  @if(round($breakpoint) == $breakpoint) {
+    @if($breakpoint == 0) {
+      @content;
+    } @else {
+      @media screen and (#{$min-or-max}-width: $breakpoint) {
+        @content;
+      }
+    }
+  } @else {
+    @if map-has-key($breakpoints, $breakpoint) {
+      $breakpoint-value: map-get($breakpoints, $breakpoint);
+      @media screen and (#{$min-or-max}-width: $breakpoint-value) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+  }
+}
+
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+  @include media($breakpoint, 'min') {
+    &-#{$modifier}-offset-0 {
+      margin-left: 0;
+    }
+    @for $i from 1 through $grid-cols {
+      &-#{$modifier}-#{$i} {
+        width:100%;
+        position: relative;
+        padding-right: 15px;
+        padding-left: 15px;
+        flex: 0 0 (100 / ($grid-cols / $i) ) * 1%;
+        max-width: (100 / ($grid-cols / $i) ) * 1%;
+      }
+      &-#{$modifier}-offset-#{$i} {
+        margin-left: (100 / ($grid-cols / $i) ) * 1%;
+      }
+    }
+  }
+}
+
+@each $modifier , $breakpoint in $grid__breakpoints {
+  @if($modifier == '') {
+    $modifier: 'xs';
+  }
+  @include media($breakpoint - 1, 'max') {
+    .hidden-#{$modifier}-down {
+      display: none !important;
+    }
+  }
+  @include media($breakpoint, 'min') {
+    .hidden-#{$modifier}-up {
+      display: none !important;
+    }
+  }
+}
