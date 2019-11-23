@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Header from './scenes/Header/Header';
 import RightSidebar from './scenes/RightSidebar/RightSidebar';
+import LeftSidebar from './scenes/LeftSidebar/LeftSidebar';
 
 class Pokemon extends Component {
   constructor(props) {
@@ -17,10 +18,10 @@ class Pokemon extends Component {
   }
 
   componentDidMount() {
-    this.fetchUsers();
+    this.fetchPokemon();
   }
 
-  fetchUsers = () => {
+  fetchPokemon = () => {
     const { match } = this.props;
     const { pokemon } = match.params;
     this.setState({
@@ -37,15 +38,16 @@ class Pokemon extends Component {
       .then((res) => {
         this.setState({
           resSpecies: res.data,
+          isFetching: false,
         });
-        return axios.get(res.data.evolution_chain.url);
+        // return axios.get(res.data.evolution_chain.url);
       })
-      .then((res) => {
+      /* .then((res) => {
         this.setState({
           resEvolve: res.data,
           isFetching: false,
         });
-      })
+      }) */
       .catch((e) => {
         console.log(e);
         this.setState({ isFetching: false });
@@ -61,6 +63,7 @@ class Pokemon extends Component {
         <div className={`row ${resSpecies.color.name}`}>
           <Header name={resPokemon.name} />
           <RightSidebar resSpecies={resSpecies} resEvolve={resEvolve} />
+          <LeftSidebar resPokemon={resPokemon} />
         </div>
       );
     }

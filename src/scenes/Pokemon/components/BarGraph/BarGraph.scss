@@ -1,0 +1,61 @@
+.graph {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .text, .bar__wrap {
+    margin-bottom:1.5rem;
+  }
+
+  .graph__text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 1rem;
+
+    .text {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3, p {
+        margin:0;
+      }
+    }
+  }
+
+  .graph__bars {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: -25;
+    flex: 3;
+
+    .bar__wrap {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      /* padding: 1rem 0; */
+
+      .bar {
+        display: flex;
+        width: 100%;
+        flex:1;
+        background: rgb(255,255,255);
+        background: -moz-linear-gradient(153deg, rgba(255,255,255,0.500437675070028) 0%, rgba(222,222,222,1) 100%);
+        background: -webkit-linear-gradient(153deg, rgba(255,255,255,0.500437675070028) 0%, rgba(222,222,222,1) 100%);
+        background: linear-gradient(153deg, rgba(255,255,255,0.500437675070028) 0%, rgba(222,222,222,1) 100%);
+        border-radius: 50px;
+
+        .bar__amount {
+          background: #e05b42;
+          z-index: 25;
+          border-top-left-radius: 50px;
+          border-bottom-left-radius: 50px;
+        }
+      }
+    }
+  }
+}

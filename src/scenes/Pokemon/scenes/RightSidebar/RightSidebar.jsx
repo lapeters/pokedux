@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EvolutionChain = ({ resEvolve }) => {
-  const evoChain = [];
-  const evoData = resEvolve.chain;
+/* const EvolutionChain = ({ resEvolve }) => {
+  function list() {
+    const evoChain = [];
+    const evoData = resEvolve.chain;
+    Object.keys(evoData).forEach((key) => evoChain.push(evoData[key]));
+    return evoChain;
+  }
 
-  console.log(evoData.evolves_to.length);
-
+  console.log(list());
   return (
     <div />
   );
@@ -18,7 +21,7 @@ EvolutionChain.propTypes = {
       evolves_to: PropTypes.arrayOf(PropTypes.shape()),
     }),
   }).isRequired,
-};
+}; */
 
 const GenderRate = ({ genderRate }) => {
   const femRate = ((genderRate / 8) * 100);
@@ -58,15 +61,13 @@ EggGroups.propTypes = {
   eggGroups: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })).isRequired,
 };
 
-const RightSidebar = ({ resSpecies, resEvolve }) => {
-  if (Object.keys(resSpecies).length <= 1 && Object.keys(resEvolve).length <= 1) {
+const RightSidebar = ({ resSpecies }) => {
+  if (Object.keys(resSpecies).length <= 1) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <div className="col--4">
-      <h2>Evolution Chain</h2>
-      <EvolutionChain resEvolve={resEvolve} />
       <h2>Breeding</h2>
       <h3>Gender Rate</h3>
       <GenderRate genderRate={resSpecies.gender_rate} />
@@ -82,7 +83,6 @@ RightSidebar.propTypes = {
     egg_groups: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),
     gender_rate: PropTypes.number,
   }).isRequired,
-  resEvolve: PropTypes.shape({}).isRequired,
 };
 
 export default RightSidebar;
