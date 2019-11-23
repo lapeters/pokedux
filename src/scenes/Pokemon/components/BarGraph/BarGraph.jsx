@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './BarGraph.scss';
 
 const BarGraph = ({ data, cap }) => (
   <div className="bar-graph">

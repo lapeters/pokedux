@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="nav-wrapper col--6 col--offset-6">
-      <ul>
+    <nav className="nav-wrapper row">
+      <ul className="col--6 col--offset-6">
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
       </ul>
@@ -14,8 +14,8 @@ function Navbar() {
 
 function Header() {
   return (
-    <header className="container--fluid">
-      <div className="row">
+    <header className="row">
+      <div className="col--12">
         <Navbar />
       </div>
     </header>

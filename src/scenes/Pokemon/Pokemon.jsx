@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './scenes/Header/Header';
 import RightSidebar from './scenes/RightSidebar/RightSidebar';
 import LeftSidebar from './scenes/LeftSidebar/LeftSidebar';
+import MiddleProfile from './scenes/MiddleProfile/MiddleProfile';
 
 class Pokemon extends Component {
   constructor(props) {
@@ -60,10 +61,13 @@ class Pokemon extends Component {
     } = this.state;
     if (apiCalled === true && isFetching === false) {
       return (
-        <div className={`row ${resSpecies.color.name}`}>
-          <Header name={resPokemon.name} />
-          <RightSidebar resSpecies={resSpecies} resEvolve={resEvolve} />
-          <LeftSidebar resPokemon={resPokemon} />
+        <div className={`pokemon pokemon-${resSpecies.color.name} col--12`}>
+          <div className="row">
+            <Header name={resPokemon.name} />
+            <RightSidebar resSpecies={resSpecies} resEvolve={resEvolve} />
+            <MiddleProfile id={resPokemon.id} />
+            <LeftSidebar resPokemon={resPokemon} />
+          </div>
         </div>
       );
     }

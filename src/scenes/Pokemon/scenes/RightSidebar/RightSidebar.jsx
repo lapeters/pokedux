@@ -67,12 +67,14 @@ const RightSidebar = ({ resSpecies }) => {
   }
 
   return (
-    <div className="col--4">
-      <h2>Breeding</h2>
-      <h3>Gender Rate</h3>
-      <GenderRate genderRate={resSpecies.gender_rate} />
-      <h3>Egg Groups</h3>
-      <EggGroups eggGroups={resSpecies.egg_groups} />
+    <div className="pokemon__sidebar pokemon__sidebar-right col--4">
+      <div className="sidebar__wrapper">
+        <h2>Breeding</h2>
+        <h3>Gender Rate</h3>
+        <GenderRate genderRate={resSpecies.gender_rate} />
+        <h3>Egg Groups</h3>
+        <EggGroups eggGroups={resSpecies.egg_groups} />
+      </div>
     </div>
   );
 };

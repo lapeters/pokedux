@@ -8,7 +8,7 @@ const Header = (props) => {
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
   return (
-    <div className="col--12">
+    <div className="pokemon__header col--12">
       <h1>{capitalize(name)}</h1>
     </div>
   );

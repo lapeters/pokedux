@@ -51,11 +51,13 @@ const LeftSidebar = ({ resPokemon }) => {
   });
 
   return (
-    <div className="col--4">
-      <h2>Types</h2>
-      <TypeList types={resPokemon.types} />
-      <h2>Stats</h2>
-      <BarGraph data={statList} cap="255" />
+    <div className="pokemon__sidebar pokemon__sidebar-left col--4">
+      <div className="sidebar__wrapper">
+        <h2>Types</h2>
+        <TypeList types={resPokemon.types} />
+        <h2>Stats</h2>
+        <BarGraph data={statList} cap="255" />
+      </div>
     </div>
   );
 };
