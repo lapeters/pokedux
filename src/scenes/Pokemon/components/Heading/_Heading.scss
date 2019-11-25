@@ -1,0 +1,7 @@
+.heading {
+  > * {
+    padding-bottom: 0.5rem;
+    border-bottom: 7px solid;
+    display: inline-block;
+  }
+}

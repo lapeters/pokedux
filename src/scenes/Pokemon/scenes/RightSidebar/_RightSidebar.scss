@@ -1,0 +1,23 @@
+.type__list {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  .type {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    margin: 0 0.5rem;
+    border-radius: 50px;
+
+    @each $name, $color in $type_colors {
+      &.type-#{$name} {
+        background: $color;
+        @if $name == "dark" or $name == "fighting" {
+          color: scale-color($color, $lightness: 60%);
+        } @else {
+          color: scale-color($color, $lightness: -60%);
+        }
+      }
+    }
+  }
+}

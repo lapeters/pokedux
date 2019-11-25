@@ -1,90 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BarGraph from '../../components/BarGraph/BarGraph';
+import Heading from '../../components/Heading/Heading';
 
-/* const EvolutionChain = ({ resEvolve }) => {
-  function list() {
-    const evoChain = [];
-    const evoData = resEvolve.chain;
-    Object.keys(evoData).forEach((key) => evoChain.push(evoData[key]));
-    return evoChain;
-  }
-
-  console.log(list());
-  return (
-    <div />
-  );
-};
-
-EvolutionChain.propTypes = {
-  resEvolve: PropTypes.shape({
-    chain: PropTypes.shape({
-      evolves_to: PropTypes.arrayOf(PropTypes.shape()),
-    }),
-  }).isRequired,
-}; */
-
-const GenderRate = ({ genderRate }) => {
-  const femRate = ((genderRate / 8) * 100);
-  const maleRate = (100 - femRate);
-
-  return (
-    <div>
-      <p>{`Female: ${femRate}%`}</p>
-      <p>{`Male: ${maleRate}%`}</p>
-    </div>
-  );
-};
-
-GenderRate.propTypes = {
-  genderRate: PropTypes.number.isRequired,
-};
-
-const EggGroups = ({ eggGroups }) => {
-  const eggGroupsList = eggGroups.length ? (
-    eggGroups.map((group) => (
-      <li key={group.name}>
-        {group.name}
+const TypeList = ({ types }) => {
+  const typeList = types.length ? (
+    types.map((type) => (
+      <li key={type.slot} className={`type type-${type.type.name}`}>
+        {type.type.name}
       </li>
     ))
   ) : (
-    <li>No egg groups listed</li>
+    <p>No types to display.</p>
   );
 
   return (
-    <ul>
-      {eggGroupsList}
-    </ul>
+    <ul className="type__list">{typeList}</ul>
   );
 };
-
-EggGroups.propTypes = {
-  eggGroups: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })).isRequired,
+TypeList.propTypes = {
+  types: PropTypes.arrayOf(PropTypes.shape({
+    slot: PropTypes.number,
+    type: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  })).isRequired,
 };
 
-const RightSidebar = ({ resSpecies }) => {
-  if (Object.keys(resSpecies).length <= 1) {
-    return <h1>Loading...</h1>;
+const LeftSidebar = ({ resPokemon }) => {
+  const statList = [];
+  const { stats } = resPokemon;
+
+  function getStatName(name) {
+    const newName = {
+      attack: 'ATK',
+      speed: 'SPD',
+      defense: 'DEF',
+      hp: 'HP',
+      'special-attack': 'SATK',
+      'special-defense': 'SDEF',
+      default: '',
+    };
+    return (newName[name] || newName.default);
   }
 
+  stats.forEach((item) => {
+    statList.push({
+      name: getStatName(item.stat.name),
+      amount: item.base_stat,
+    });
+  });
+
   return (
-    <div className="pokemon__sidebar pokemon__sidebar-right col--4">
+    <div className="pokemon__sidebar pokemon__sidebar-left col--4">
       <div className="sidebar__wrapper">
-        <h2>Breeding</h2>
-        <h3>Gender Rate</h3>
-        <GenderRate genderRate={resSpecies.gender_rate} />
-        <h3>Egg Groups</h3>
-        <EggGroups eggGroups={resSpecies.egg_groups} />
+        <TypeList types={resPokemon.types} />
+        <Heading title="Base Stats" tag="h2" />
+        <BarGraph data={statList} cap="255" />
       </div>
     </div>
   );
 };
 
-RightSidebar.propTypes = {
-  resSpecies: PropTypes.shape({
-    name: PropTypes.string,
-    egg_groups: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),
-    gender_rate: PropTypes.number,
+LeftSidebar.propTypes = {
+  resPokemon: PropTypes.shape({
+    types: PropTypes.arrayOf(PropTypes.shape({})),
+    stats: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
 };
 
-export default RightSidebar;
+export default LeftSidebar;

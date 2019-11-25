@@ -22,13 +22,42 @@ $container-max-widths: (
 );
 
 // COLOR VARIABLES
-$black: #373737;
-$blue: #64b5f6;
-$brown: #a1887f;
-$gray: #90a4ae;
-$green: #81c784;
-$pink: #f06292;
-$purple: #ba68c8;
-$red: #e57373;
-$white: #e0e0e0;
-$yellow: #fff176;
+$primary: #B61827;
+$secondary: #000428;
+$neutral_bg:#fafafa;
+$white: #fff;
+$black: #000;
+
+$theme_colors: (
+  "black": #373737,
+  "blue": #64b5f6,
+  "brown": #a1887f,
+  "gray": #9e9e9e,
+  "green": #81c784,
+  "pink": #f06292,
+  "purple": #ba68c8,
+  "red": #e57373,
+  "white": #dae2ed,
+  "yellow": #ffe082,
+);
+
+$type_colors: (
+  "normal":	#e0e0e0,
+  "fire": #e57373,
+  "fighting": #c62828,
+  "water": #64b5f6,
+  "flying":	#d1c4e9,
+  "grass": #81c784,
+  "poison":	#ce93d8,
+  "electric": #ffe082,
+  "ground": #cbae82,
+  "psychic": #ec407a,
+  "rock":	#a1887f,
+  "ice": #b2ebf2,
+  "bug": #aed581,
+  "dragon": #9575cd,
+  "ghost": #7986cb,
+  "dark": #373737,
+  "steel": #9e9e9e,
+  "fairy": #f48fb1
+);

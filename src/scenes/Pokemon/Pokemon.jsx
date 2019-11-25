@@ -63,10 +63,9 @@ class Pokemon extends Component {
       return (
         <div className={`pokemon pokemon-${resSpecies.color.name} col--12`}>
           <div className="row">
-            <Header name={resPokemon.name} />
-            <RightSidebar resSpecies={resSpecies} resEvolve={resEvolve} />
-            <MiddleProfile id={resPokemon.id} />
-            <LeftSidebar resPokemon={resPokemon} />
+            <LeftSidebar resSpecies={resSpecies} resEvolve={resEvolve} />
+            <MiddleProfile id={resPokemon.id} name={resPokemon.name} />
+            <RightSidebar resPokemon={resPokemon} />
           </div>
         </div>
       );
