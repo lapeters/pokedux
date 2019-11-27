@@ -22,6 +22,14 @@ class Pokemon extends Component {
     this.fetchPokemon();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { match } = this.props;
+    const { pokemon } = match.params;
+    if (prevProps.match.params.pokemon !== pokemon) {
+      this.fetchPokemon();
+    }
+  }
+
   fetchPokemon = () => {
     const { match } = this.props;
     const { pokemon } = match.params;
@@ -41,14 +49,7 @@ class Pokemon extends Component {
           resSpecies: res.data,
           isFetching: false,
         });
-        // return axios.get(res.data.evolution_chain.url);
       })
-      /* .then((res) => {
-        this.setState({
-          resEvolve: res.data,
-          isFetching: false,
-        });
-      }) */
       .catch((e) => {
         console.log(e);
         this.setState({ isFetching: false });
