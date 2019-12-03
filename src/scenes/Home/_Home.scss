@@ -1,6 +1,13 @@
 .home {
+  flex:1;
   > .row {
     height: 100%;
+  }
+  .home__background {
+    display: none;
+    @include media("lg", "min") {
+      display: block;
+    }
   }
   .home__search {
     display: flex;
@@ -44,13 +51,6 @@
           display: flex;
           justify-content: center;
           align-items: center;
-
-          input {
-            border: 1px solid #000;
-            height: 100%;
-            font-size: 1rem;
-            line-height: 1.1;
-          }
         }
       }
     }

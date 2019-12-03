@@ -5,6 +5,10 @@ header {
   left: 0;
   z-index: 1;
   box-shadow: 0 0 15px rgba($black, 0.3);
+  .header__search {
+    display: flex;
+    align-items: center;
+  }
   nav {
     ul {
       display: flex;

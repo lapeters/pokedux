@@ -1,0 +1,14 @@
+.pokemon__sidebar-left {
+  align-self: flex-end;
+}
+.pokemon__gender-rate {
+  .gender-rate__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > * {
+      padding: 0 1rem;
+      text-align: center;
+    }
+  }
+}

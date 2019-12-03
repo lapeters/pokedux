@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Search extends Component {
   constructor(props) {
@@ -17,9 +18,10 @@ class Search extends Component {
   }
 
   handleSubmit(event) {
-    const { value } = this.state;
+    let { value } = this.state;
     const { history } = this.props;
-    history.push(`/${value.toLowerCase()}`);
+    value = value.replace(/\./g, '').replace(/\s+/g, '-').toLowerCase();
+    history.push(`/${value}`);
     event.preventDefault();
     this.setState({ value: '' });
   }
@@ -31,7 +33,7 @@ class Search extends Component {
       <form className="search__form" onSubmit={this.handleSubmit}>
         <div className="form__group">
           <input id="pokemonSearch" type="text" value={value} onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
+          <button type="submit" aria-label="Submit"><FontAwesomeIcon icon="search" /></button>
         </div>
       </form>
     );

@@ -20,7 +20,7 @@
 }
 
 @mixin media($breakpoint, $min-or-max) {
-  @if(round($breakpoint) == $breakpoint) {
+  @if(type-of($breakpoint) == 'number') {
     @if($breakpoint == 0) {
       @content;
     } @else {
@@ -29,8 +29,8 @@
       }
     }
   } @else {
-    @if map-has-key($breakpoints, $breakpoint) {
-      $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @if map-has-key($grid__breakpoints, $breakpoint) {
+      $breakpoint-value: map-get($grid__breakpoints, $breakpoint);
       @media screen and (#{$min-or-max}-width: $breakpoint-value) {
         @content;
       }

@@ -15,15 +15,13 @@ function Navbar() {
 
 function Header() {
   return (
-    <header className="row">
-      <div className="col--12">
-        <div className="row">
-          <div className="col--6">
-            <Search />
-          </div>
-          <div className="col--6">
-            <Navbar />
-          </div>
+    <header className="container--fluid">
+      <div className="row">
+        <div className="header__search col--7">
+          <Search />
+        </div>
+        <div className="header__nav col--5">
+          <Navbar />
         </div>
       </div>
     </header>

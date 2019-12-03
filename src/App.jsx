@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main role="main" className="row">
+      <main role="main" className="container--fluid">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
