@@ -26,7 +26,10 @@ export const GenderRate = ({ genderRate }) => {
   }
   return (
     <div>
-      <p>Genderless</p>
+      <Heading title="Gender Rates" tag="h2" />
+      <div className="gender-rate__wrapper">
+        <p>Genderless</p>
+      </div>
     </div>
   );
 };

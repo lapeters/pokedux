@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Tabs from '../../components/Tabs/Tabs';
 import Header from './scenes/Header/Header';
-import {
-  TypeList,
-  AboutPokemon,
-  BaseStats,
-  DescPokemon,
-} from './scenes/RightSidebar/RightSidebar';
+import PokemonAbilities from './components/PokemonAbilities/PokemonAbilities';
+import PokemonDesc from './components/PokemonDesc/PokemonDesc';
+import PokemonSize from './components/PokemonSize/PokemonSize';
+import PokemonStats from './components/PokemonStats/PokemonStats';
+import PokemonTypes from './components/PokemonTypes/PokemonTypes';
 import { GenderRate, EggGroups } from './scenes/LeftSidebar/LeftSidebar';
 import { NamePokemon, ImgPokemon, MiddleProfile } from './scenes/MiddleProfile/MiddleProfile';
 import NoMatch from './scenes/NoMatch/NoMatch';
@@ -23,6 +22,7 @@ class Pokemon extends Component {
       resPokemon: [],
       resSpecies: [],
       resEvolve: [],
+      resAbilities: [],
       width: window.innerWidth,
     };
   }
@@ -47,6 +47,7 @@ class Pokemon extends Component {
   fetchPokemon = () => {
     const { match } = this.props;
     const { pokemon } = match.params;
+
     this.setState({
       apiCalled: true,
       isFetching: true,
@@ -57,11 +58,20 @@ class Pokemon extends Component {
         this.setState({
           resPokemon: res.data,
         });
-        return axios.get(res.data.species.url);
+        return axios.all([
+          axios.get(res.data.species.url),
+          res.data.abilities.map((i) => axios.get(i.ability.url)),
+        ]);
       })
+      .then(axios.spread((species, ...responses) => {
+        this.setState({
+          resSpecies: species.data,
+        });
+        return Promise.all(responses[0]);
+      }))
       .then((res) => {
         this.setState({
-          resSpecies: res.data,
+          resAbilities: res,
           isFetching: false,
         });
       })
@@ -80,7 +90,7 @@ class Pokemon extends Component {
 
   render() {
     const {
-      apiCalled, isFetching, resPokemon, resSpecies, resEvolve, error,
+      apiCalled, isFetching, resPokemon, resSpecies, resAbilities, resEvolve, error,
     } = this.state;
     const { width } = this.state;
     const isMobile = width <= 991;
@@ -97,17 +107,18 @@ class Pokemon extends Component {
           <div className={`pokemon pokemon-mobile pokemon-${resSpecies.color.name} row`}>
             <div className="col--12 pokemon__profile">
               <NamePokemon name={resPokemon.name} />
-              <TypeList types={resPokemon.types} />
+              <PokemonTypes types={resPokemon.types} />
               <ImgPokemon id={resPokemon.id} />
             </div>
             <div className="col--12 pokemon__tabs">
               <Tabs>
                 <div label="About">
-                  <DescPokemon desc={resSpecies.flavor_text_entries} />
-                  <AboutPokemon height={resPokemon.height} weight={resPokemon.weight} />
+                  <PokemonDesc desc={resSpecies.flavor_text_entries} />
+                  <PokemonSize height={resPokemon.height} weight={resPokemon.weight} />
+                  <PokemonAbilities abilities={resAbilities} />
                 </div>
                 <div label="Stats">
-                  <BaseStats stats={resPokemon.stats} />
+                  <PokemonStats stats={resPokemon.stats} />
                 </div>
                 <div label="Breeding">
                   <GenderRate genderRate={resSpecies.gender_rate} />
@@ -120,24 +131,25 @@ class Pokemon extends Component {
       }
       return (
         <div className={`pokemon pokemon-${resSpecies.color.name} row`}>
-          <div className="pokemon__sidebar pokemon__sidebar-left col-xl-3 col--4">
+          <div className="pokemon__sidebar pokemon__sidebar-left col--4">
             <div className="sidebar__wrapper">
+              <PokemonDesc desc={resSpecies.flavor_text_entries} />
+              <PokemonSize height={resPokemon.height} weight={resPokemon.weight} />
               <GenderRate genderRate={resSpecies.gender_rate} />
               <EggGroups eggGroups={resSpecies.egg_groups} />
             </div>
           </div>
-          <div className="pokemon__profile col--4">
+          <div className="pokemon__profile col-xl-3 col--4">
             <div className="profile__wrapper">
               <NamePokemon name={resPokemon.name} />
               <ImgPokemon id={resSpecies.id} />
-              <TypeList types={resPokemon.types} />
+              <PokemonTypes types={resPokemon.types} />
             </div>
           </div>
           <div className="pokemon__sidebar pokemon__sidebar-right col--4">
             <div className="sidebar__wrapper">
-              <DescPokemon desc={resSpecies.flavor_text_entries} />
-              <AboutPokemon height={resPokemon.height} weight={resPokemon.weight} />
-              <BaseStats stats={resPokemon.stats} />
+              <PokemonAbilities abilities={resAbilities} />
+              <PokemonStats stats={resPokemon.stats} />
             </div>
           </div>
         </div>

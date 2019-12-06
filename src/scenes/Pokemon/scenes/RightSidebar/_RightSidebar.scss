@@ -9,6 +9,7 @@
     margin: 0 0.5rem;
     border-radius: 50px;
     border: 1px solid;
+    font-size: 1.1rem;
 
     @each $name, $color in $type_colors {
       &.type-#{$name} {

@@ -78,6 +78,38 @@ TypeList.propTypes = {
   })).isRequired,
 };
 
+export const Abilities = ({ abilities }) => {
+  function formatAbility(name) {
+    const frags = name.split('-');
+    for (let i = 0; i < frags.length; i += 1) {
+      frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1);
+    }
+    return frags.join(' ');
+  }
+  const abilityList = abilities.length ? (
+    abilities.map((item) => (
+      <div>
+        <p>{`${formatAbility(item.ability.name)}:`}</p>
+      </div>
+    ))
+  ) : (
+    <p>No abilities to display</p>
+  );
+  return (
+    <div className="pokemon__abilities">
+      <Heading title="Abilities" tag="h2" />
+      {abilityList}
+    </div>
+  );
+};
+Abilities.propTypes = {
+  abilities: PropTypes.arrayOf(PropTypes.shape({
+    ability: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  })).isRequired,
+};
+
 export const BaseStats = ({ stats }) => {
   const statList = [];
 
