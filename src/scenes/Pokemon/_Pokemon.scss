@@ -37,6 +37,11 @@
       h1 {
         color: scale-color($color, $lightness: -40%);
       }
+      .pokemon__abilities {
+        strong {
+          color: scale-color($color, $lightness: -40%);
+        }
+      }
       .heading {
         > * {
           border-color: $color;
