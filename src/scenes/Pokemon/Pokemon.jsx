@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Tabs from '../../components/Tabs/Tabs';
-import Header from './scenes/Header/Header';
 import PokemonAbilities from './components/PokemonAbilities/PokemonAbilities';
 import PokemonDesc from './components/PokemonDesc/PokemonDesc';
 import PokemonSize from './components/PokemonSize/PokemonSize';
 import PokemonStats from './components/PokemonStats/PokemonStats';
 import PokemonTypes from './components/PokemonTypes/PokemonTypes';
-import { GenderRate, EggGroups } from './scenes/LeftSidebar/LeftSidebar';
-import { NamePokemon, ImgPokemon, MiddleProfile } from './scenes/MiddleProfile/MiddleProfile';
+import PokemonBreeding from './components/PokemonBreeding/PokemonBreeding';
+import PokemonGender from './components/PokemonGender/PokemonGender';
+import PokemonName from './components/PokemonName/PokemonName';
+import PokemonImage from './components/PokemonImage/PokemonImage';
 import NoMatch from './scenes/NoMatch/NoMatch';
 
 class Pokemon extends Component {
@@ -106,9 +107,9 @@ class Pokemon extends Component {
         return (
           <div className={`pokemon pokemon-mobile pokemon-${resSpecies.color.name} row`}>
             <div className="col--12 pokemon__profile">
-              <NamePokemon name={resPokemon.name} />
+              <PokemonName name={resPokemon.name} />
               <PokemonTypes types={resPokemon.types} />
-              <ImgPokemon id={resPokemon.id} />
+              <PokemonImage id={resPokemon.id} />
             </div>
             <div className="col--12 pokemon__tabs">
               <Tabs>
@@ -121,8 +122,8 @@ class Pokemon extends Component {
                   <PokemonStats stats={resPokemon.stats} />
                 </div>
                 <div label="Breeding">
-                  <GenderRate genderRate={resSpecies.gender_rate} />
-                  <EggGroups eggGroups={resSpecies.egg_groups} />
+                  <PokemonGender genderRate={resSpecies.gender_rate} />
+                  <PokemonBreeding eggGroups={resSpecies.egg_groups} />
                 </div>
               </Tabs>
             </div>
@@ -135,14 +136,14 @@ class Pokemon extends Component {
             <div className="sidebar__wrapper">
               <PokemonDesc desc={resSpecies.flavor_text_entries} />
               <PokemonSize height={resPokemon.height} weight={resPokemon.weight} />
-              <GenderRate genderRate={resSpecies.gender_rate} />
-              <EggGroups eggGroups={resSpecies.egg_groups} />
+              <PokemonGender genderRate={resSpecies.gender_rate} />
+              <PokemonBreeding eggGroups={resSpecies.egg_groups} />
             </div>
           </div>
           <div className="pokemon__profile col-xl-3 col--4">
             <div className="profile__wrapper">
-              <NamePokemon name={resPokemon.name} />
-              <ImgPokemon id={resSpecies.id} />
+              <PokemonName name={resPokemon.name} />
+              <PokemonImage id={resSpecies.id} />
               <PokemonTypes types={resPokemon.types} />
             </div>
           </div>

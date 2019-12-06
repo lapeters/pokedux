@@ -11,8 +11,8 @@ const PokemonSize = ({ height, weight }) => {
   }
 
   return (
-    <div className="pokemon__about">
-      <div className="about__wrapper">
+    <div className="pokemon__size">
+      <div className="size__wrapper">
         <div>
           <h3 className="h5">Height</h3>
           <h3 className="h1">
