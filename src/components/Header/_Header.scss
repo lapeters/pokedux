@@ -17,9 +17,11 @@ header {
       list-style-type: none;
       li {
         padding: 0 1rem;
+        margin:0;
         a {
           color: $white;
           text-transform: uppercase;
+          margin:0;
         }
       }
     }

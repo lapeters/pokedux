@@ -1,6 +1,6 @@
 # Pokedux
 
-A Pokédex app made using React and Redux. Template uses My React Starter found [here](https://github.com/lapeters/myreactstarter)
+A Pokédex app made using React. Template uses My React Starter found [here](https://github.com/lapeters/myreactstarter)
 
 ## Installation
 

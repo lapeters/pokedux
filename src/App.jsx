@@ -21,4 +21,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default hot(module)(App);
