@@ -91,12 +91,19 @@ class Pokemon extends Component {
 
   render() {
     const {
-      apiCalled, isFetching, resPokemon, resSpecies, resAbilities, resEvolve, error,
+      apiCalled,
+      isFetching,
+      resPokemon,
+      resSpecies,
+      resAbilities,
+      resEvolve,
+      error,
     } = this.state;
     const { width } = this.state;
     const isMobile = width <= 991;
+
     if (apiCalled === true && isFetching === false) {
-      if (error === true) {
+      if (error) {
         return (
           <div className="pokemon pokemon-404 pokemon-purple row">
             <NoMatch />
@@ -157,8 +164,10 @@ class Pokemon extends Component {
       );
     }
     return (
-      <div className="col--12">
-        <h1>Loading...</h1>
+      <div className="row">
+        <div className="col--12">
+          <h1>Loading...</h1>
+        </div>
       </div>
     );
   }

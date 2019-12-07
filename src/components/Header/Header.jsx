@@ -17,11 +17,11 @@ function Header() {
   return (
     <header className="container--fluid">
       <div className="row">
-        <div className="header__search col--7">
-          <Search />
-        </div>
-        <div className="header__nav col--5">
+        <div className="header__nav col-md-5 col--6">
           <Navbar />
+        </div>
+        <div className="header__search col-md-7 col--6">
+          <Search />
         </div>
       </div>
     </header>

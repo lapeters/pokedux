@@ -1,0 +1,13 @@
+.search__form {
+  max-width: 100%;
+  .form__group {
+    display: flex;
+    flex-wrap: wrap;
+    input {
+      position: relative;
+      flex: 1 1 0%;
+      min-width: 0;
+      margin-bottom: 0;
+    }
+  }
+}

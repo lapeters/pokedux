@@ -1,4 +1,5 @@
 header {
+  height:56px;
   background: $primary;
   position: absolute;
   top: 0;
@@ -8,16 +9,20 @@ header {
   .header__search {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
   nav {
     ul {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
       padding:0;
       list-style-type: none;
       li {
-        padding: 0 1rem;
+        padding: 0 0.6rem;
         margin:0;
+        @include media("md", "min") {
+          padding: 0 1rem;
+        }
         a {
           color: $white;
           text-transform: uppercase;

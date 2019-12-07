@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../../components/Search/Search';
-import image from '../../assets/bgrnd.jpg';
+import image from '../../assets/images/bgrnd.jpg';
 
 function Home() {
   const backgroundStyles = {
@@ -14,7 +14,11 @@ function Home() {
       <div className="home__search col-lg-6 col--12">
         <div className="search__top">
           <h1>Pokédux</h1>
-          <p>A Pokedex app made using React.</p>
+          <p>
+            A Pokedex app made using React.
+            <br />
+            Search for a Pokemon below, names only as of now.
+          </p>
         </div>
         <div className="search__middle">
           <Search />

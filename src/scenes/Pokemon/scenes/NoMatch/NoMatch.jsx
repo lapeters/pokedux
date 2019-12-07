@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import image from '../../../../assets/missingno.png';
+import { Link } from 'react-router-dom';
+import image from '../../../../assets/images/missingno.png';
 
 function NoMatch() {
   return (
@@ -8,7 +9,10 @@ function NoMatch() {
       <img src={image} alt="" />
       <h2>
         Oops! Looks like you&apos;re lost.
-        Enter a pokemon in the search above or navigate to another page!
+        Enter another Pokemon in the search above or navigate
+        {' '}
+        <Link to="/">Home</Link>
+        !
       </h2>
     </div>
   );
