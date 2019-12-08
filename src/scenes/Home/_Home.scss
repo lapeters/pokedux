@@ -6,7 +6,17 @@
   .home__background {
     display: none;
     @include media("lg", "min") {
-      display: block;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding:1rem;
+    }
+    > * {
+      background: $white;
+      padding: 0 1rem;
+      p {
+        margin:0.5rem 0;
+      }
     }
   }
   .home__search {

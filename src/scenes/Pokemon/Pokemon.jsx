@@ -116,7 +116,7 @@ class Pokemon extends Component {
             <div className="col--12 pokemon__profile">
               <PokemonName name={resPokemon.name} />
               <PokemonTypes types={resPokemon.types} />
-              <PokemonImage id={resPokemon.id} />
+              <PokemonImage id={resPokemon.id} name={resPokemon.name} />
             </div>
             <div className="col--12 pokemon__tabs">
               <Tabs>
@@ -150,7 +150,7 @@ class Pokemon extends Component {
           <div className="pokemon__profile col-xl-3 col--4">
             <div className="profile__wrapper">
               <PokemonName name={resPokemon.name} />
-              <PokemonImage id={resSpecies.id} />
+              <PokemonImage id={resSpecies.id} name={resPokemon.name} />
               <PokemonTypes types={resPokemon.types} />
             </div>
           </div>

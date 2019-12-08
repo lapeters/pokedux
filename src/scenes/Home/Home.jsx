@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../../components/Search/Search';
-import image from '../../assets/images/bgrnd.jpg';
+import image from '../../assets/images/bgrnd2.jpg';
 
 function Home() {
   const backgroundStyles = {
@@ -10,7 +10,15 @@ function Home() {
   };
   return (
     <div className="home row">
-      <div className="home__background col--6" style={backgroundStyles} />
+      <div className="home__background col--6" style={backgroundStyles}>
+        <div>
+          <p>
+            Collage by:
+            {' '}
+            <a href="https://www.pinterest.com/paularnold90/" target="_blank" rel="noopener noreferrer">Paul Arnold</a>
+          </p>
+        </div>
+      </div>
       <div className="home__search col-lg-6 col--12">
         <div className="search__top">
           <h1>Pokédux</h1>

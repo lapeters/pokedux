@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Heading from '../Heading/Heading';
-import BarGraph from '../BarGraph/BarGraph';
+import Graph from '../Graph/Graph';
 
 const PokemonStats = ({ stats }) => {
   const statList = [];
@@ -29,7 +29,7 @@ const PokemonStats = ({ stats }) => {
   return (
     <div className="pokemon__stats">
       <Heading title="Base Stats" tag="h2" />
-      <BarGraph data={statList} cap="255" />
+      <Graph data={statList} cap="255" />
     </div>
   );
 };

@@ -47,6 +47,12 @@
           border-color: $color;
         }
       }
+      a {
+        color: scale-color($color, $lightness: -60%);
+        &:hover {
+          color: $black;
+        }
+      }
     }
   }
 
@@ -76,7 +82,10 @@
         color: $white;
       }
       img {
-        max-width: 50%;
+        max-width: 75%;
+        @include media('sm', 'min') {
+          max-width: 50%;
+        }
       }
     }
     .pokemon__tabs {

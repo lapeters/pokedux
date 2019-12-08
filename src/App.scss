@@ -10,7 +10,7 @@
 @import '/components/Tabs/Tabs';
 @import '/scenes/Home/Home';
 @import '/scenes/Pokemon/components/Heading/Heading';
-@import '/scenes/Pokemon/components/BarGraph/BarGraph';
+@import '/scenes/Pokemon/components/Graph/Graph';
 @import '/scenes/Pokemon/Pokemon';
 @import '/scenes/Pokemon/components/PokemonAbilities/PokemonAbilities';
 @import '/scenes/Pokemon/components/PokemonDesc/PokemonDesc';
@@ -20,4 +20,5 @@
 @import '/scenes/Pokemon/components/PokemonSize/PokemonSize';
 @import '/scenes/Pokemon/components/PokemonStats/PokemonStats';
 @import '/scenes/Pokemon/components/PokemonTypes/PokemonTypes';
+@import '/scenes/Pokemon/components/PokemonBreeding/PokemonBreeding';
 @import '/scenes/Pokemon/scenes/NoMatch/NoMatch';

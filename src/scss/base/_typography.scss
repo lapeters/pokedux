@@ -36,4 +36,8 @@ h6, .h6 {
 }
 a {
   text-decoration: none;
+  color: $primary;
+  &:hover {
+    color: $black;
+  }
 }

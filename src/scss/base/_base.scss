@@ -37,10 +37,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 
   main {
-    padding-top:56px;
+    padding-top: 50px;
     flex: 1;
     background: $neutral_bg;
     display: flex;
+    @include media("md", "min") {
+      padding-top:55px;
+    }
+    @include media("xxxl", "min") {
+      padding-top:75px;
+    }
   }
 }
 
@@ -50,6 +56,6 @@ img {
 }
 
 button, input, optgroup, select, textarea {
-  border: 1px solid rgba($black, 0.3);
+  border: 1px solid $black;
   padding: .375rem .75rem;
 }

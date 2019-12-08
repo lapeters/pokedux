@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Heading from '../Heading/Heading';
 
 const PokemonBreeding = ({ eggGroups }) => {
-  const capitalize = (s) => {
+  const format = (s) => {
     if (typeof s !== 'string') return '';
-    return s.charAt(0).toUpperCase() + s.slice(1);
+    return s.replace(/-/g, ' ');
   };
   const eggGroupsList = eggGroups.length ? (
     eggGroups.map((group) => (
       <li key={group.name}>
-        {capitalize(group.name)}
+        {format(group.name)}
       </li>
     ))
   ) : (

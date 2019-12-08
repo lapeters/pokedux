@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import Heading from '../Heading/Heading';
 
 const PokemonAbilities = ({ abilities }) => {
-  function formatAbility(name) {
-    const frags = name.split('-');
-    for (let i = 0; i < frags.length; i += 1) {
-      frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1);
-    }
-    return frags.join(' ');
-  }
+  const format = (s) => {
+    if (typeof s !== 'string') return '';
+    return s.replace(/-/g, ' ');
+  };
 
   const abilityList = abilities.length ? (
     abilities.map((i) => {
@@ -17,7 +14,7 @@ const PokemonAbilities = ({ abilities }) => {
       const desc = data.flavor_text_entries.filter((obj) => (obj.language.name === 'en'));
       return (
         <li key={data.id}>
-          <strong>{`${formatAbility(data.name)}: `}</strong>
+          <strong>{`${format(data.name)}: `}</strong>
           {desc[0].flavor_text}
         </li>
       );
