@@ -19,3 +19,12 @@ jspm_packages/
 
 # React build / generate output
 dist
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/

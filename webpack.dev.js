@@ -5,6 +5,7 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -14,7 +15,7 @@ module.exports = merge(common, {
             loader: 'file-loader',
           },
         ],
-      },
+      }
     ]
   },
   resolve: {
@@ -23,12 +24,20 @@ module.exports = merge(common, {
       'react-dom': '@hot-loader/react-dom'
     }
   },
+  output: {
+    path: path.resolve(__dirname, "dist/"),
+    publicPath: '/dist/',
+    filename: "bundle.js"
+  },
   devServer: {
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
-    hot: true,
-    historyApiFallback: true
+    hotOnly: true,
+    historyApiFallback: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
 });

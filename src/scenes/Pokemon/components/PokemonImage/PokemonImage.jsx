@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'react-image';
+import placeholder from '../../../../assets/images/placeholder.png';
+import loading from '../../../../assets/images/loading.gif';
 
 const PokemonImage = ({ id, name }) => {
   const forms = ['mega-x', 'mega-y', 'snowy', 'rainy', 'sunny', 'plant', 'sandy', 'trash', 'mega', 'overcast', 'sunshine', 'east', 'west', 'fan', 'frost', 'heat', 'mow', 'wash', 'altered', 'origin', 'land', 'sky', 'normal', 'blue-striped', 'red-striped', 'standard', 'autumn', 'spring', 'summer', 'winter', 'incarnate', 'therian', 'black', 'white', 'ordinary', 'resolute', 'pirouette', 'archipelago', 'continental', 'elegant', 'fancy', 'garden', 'high-plains', 'icy-snow', 'jungle', 'marine', 'meadow', 'modern', 'monsoon', 'ocean', 'poke-ball', 'polar', 'river', 'sandstorm', 'savanna', 'sun', 'tundra', 'diamond', 'heart', 'star', 'blade', 'shield', 'unbound'];
@@ -25,7 +28,7 @@ const PokemonImage = ({ id, name }) => {
   };
 
   return (
-    <img src={tryImage(checkForm(s)) ? tryImage(checkForm(s)) : `https://img.pokemondb.net/artwork/vector/${name.toLowerCase()}.png`} alt="" />
+    <Img src={tryImage(checkForm(s)) ? tryImage(checkForm(s)) : `https://img.pokemondb.net/artwork/vector/${name.toLowerCase()}.png`} loader={<img src={loading} alt="Loading" />} unloader={<img src={placeholder} alt="Placeholder" />} />
   );
 };
 
